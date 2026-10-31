@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-zinc-900 text-white">
+
+    <div class="main w-full min-h-screen p-10">
+
+        <h1 class="text-3xl font-bold mb-10">
+            Create Your Task
+        </h1>
+
+        <form action="/create" method="POST">
+
+            <input
+                type="text"
+                name="title"
+                placeholder="Task Title"
+                class="block w-full p-3 rounded bg-zinc-800 mb-4"
+                required
+            >
+
+            <textarea
+                name="details"
+                placeholder="Write your task details..."
+                class="block w-full p-3 rounded bg-zinc-800 mb-4"
+                required
+            ></textarea>
+
+            <button
+                type="submit"
+                class="bg-blue-600 px-5 py-3 rounded"
+            >
+                Create Task
+            </button>
+
+        </form>
+
+        <h2 class="text-2xl font-bold mt-10 mb-5">
+            Your Tasks
+        </h2>
+
+        <div class="flex flex-wrap gap-5">
+
+            <% if (files.length > 0) { %>
+
+                <% files.forEach(function(file) { %>
+
+                    <div class="bg-zinc-800 p-5 rounded w-64">
+
+                        <h3 class="text-xl font-bold mb-3">
+                            <%= file %>
+                        </h3>
+
+                        <a
+                            href="/file/<%= file %>"
+                            class="text-blue-400"
+                        >
+                            Read More
+                        </a>
+
+                    </div>
+
+                <% }) %>
+
+            <% } else { %>
+
+                <p class="text-zinc-400">No tasks available.</p>
+
+            <% } %>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
